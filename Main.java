@@ -1,4 +1,4 @@
-package paket_GUI;
+package paket_Cocktailbar_Verwaltung;
 
 public class Main
 {

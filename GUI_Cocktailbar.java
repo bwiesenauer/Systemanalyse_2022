@@ -1,4 +1,4 @@
-package paket_GUI;
+package paket_Cocktailbar_Verwaltung;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -9,10 +9,14 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import javax.swing.JRadioButton;
 
 public class GUI_Cocktailbar extends JFrame
 {
@@ -20,7 +24,7 @@ public class GUI_Cocktailbar extends JFrame
 	private JPanel contentPane;
 	private JTextField txtName;
 	private JTextField txtalc;
-	private JTextField txtGlas;
+	private JTextField txtZubereitung;
 	private JTextField txtZutaten;
 
 	/**
@@ -68,7 +72,7 @@ public class GUI_Cocktailbar extends JFrame
 		contentPane.add(lblCocktailbarVerwaltung);
 		
 		txtName = new JTextField();
-		txtName.setBounds(144, 89, 249, 26);
+		txtName.setBounds(204, 89, 249, 26);
 		contentPane.add(txtName);
 		txtName.setColumns(10);
 		
@@ -84,27 +88,27 @@ public class GUI_Cocktailbar extends JFrame
 		
 		txtalc = new JTextField();
 		txtalc.setColumns(10);
-		txtalc.setBounds(144, 132, 249, 26);
+		txtalc.setBounds(204, 132, 249, 26);
 		contentPane.add(txtalc);
 		
-		JLabel lblGlasTyp = new JLabel("Glas Typ");
+		JLabel lblGlasTyp = new JLabel("Zubereitungsart");
 		lblGlasTyp.setFont(new Font("Arial Unicode MS", Font.PLAIN, 14));
-		lblGlasTyp.setBounds(35, 175, 99, 20);
+		lblGlasTyp.setBounds(35, 175, 115, 20);
 		contentPane.add(lblGlasTyp);
 		
-		txtGlas = new JTextField();
-		txtGlas.setColumns(10);
-		txtGlas.setBounds(144, 174, 249, 26);
-		contentPane.add(txtGlas);
+		txtZubereitung = new JTextField();
+		txtZubereitung.setColumns(10);
+		txtZubereitung.setBounds(204, 174, 249, 26);
+		contentPane.add(txtZubereitung);
 		
 		JLabel lblZutaten = new JLabel("Zutaten");
 		lblZutaten.setFont(new Font("Arial Unicode MS", Font.PLAIN, 14));
-		lblZutaten.setBounds(35, 220, 99, 20);
+		lblZutaten.setBounds(35, 258, 99, 20);
 		contentPane.add(lblZutaten);
 		
 		txtZutaten = new JTextField();
 		txtZutaten.setColumns(10);
-		txtZutaten.setBounds(144, 219, 249, 26);
+		txtZutaten.setBounds(204, 257, 249, 26);
 		contentPane.add(txtZutaten);
 		
 		JButton btnEnde = new JButton("Beenden");
@@ -122,7 +126,7 @@ public class GUI_Cocktailbar extends JFrame
 		btnRezeptAnlegen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				// Anweisungen hier einfügen
+				// Anweisungen hier einfï¿½gen
 			}
 		});
 		btnRezeptAnlegen.setFont(new Font("Calibri", Font.BOLD, 14));
@@ -133,7 +137,8 @@ public class GUI_Cocktailbar extends JFrame
 		btnRezeptAnzeigen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				// Anweisungen hier einfügen
+				// Anweisungen hier einfï¿½gen
+				
 			}
 		});
 		btnRezeptAnzeigen.setFont(new Font("Calibri", Font.BOLD, 14));
@@ -144,7 +149,7 @@ public class GUI_Cocktailbar extends JFrame
 		btnRezeptLoeschen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				// Anweisungen hier einfügen
+				// Anweisungen hier einfï¿½gen
 			}
 		});
 		btnRezeptLoeschen.setForeground(Color.BLACK);
@@ -163,5 +168,52 @@ public class GUI_Cocktailbar extends JFrame
 		btnRezeptBearbeiten.setFont(new Font("Calibri", Font.BOLD, 14));
 		btnRezeptBearbeiten.setBounds(35, 462, 174, 46);
 		contentPane.add(btnRezeptBearbeiten);
+		
+		JLabel lblGlastyp = new JLabel("Glas-Typ");
+		lblGlastyp.setFont(new Font("Arial Unicode MS", Font.PLAIN, 14));
+		lblGlastyp.setBounds(35, 217, 115, 20);
+		contentPane.add(lblGlastyp);
+		
+		JRadioButton rbCocktail = new JRadioButton("Cocktail");
+		rbCocktail.setFont(new Font("Arial Unicode MS", Font.PLAIN, 12));
+		rbCocktail.setBounds(204, 217, 76, 23);
+		contentPane.add(rbCocktail);
+		
+		JRadioButton rbLimo = new JRadioButton("Limo");
+		rbLimo.setFont(new Font("Arial Unicode MS", Font.PLAIN, 12));
+		rbLimo.setBounds(282, 217, 76, 23);
+		contentPane.add(rbLimo);
+		
+		JRadioButton rbSeckt = new JRadioButton("Seckt");
+		rbSeckt.setFont(new Font("Arial Unicode MS", Font.PLAIN, 12));
+		rbSeckt.setBounds(377, 217, 76, 23);
+		contentPane.add(rbSeckt);
+		
+		// zuweisung der einzelnen Buttons einer Button Group g
+		ButtonGroup g = new ButtonGroup();
+		g.add(rbSeckt);
+		g.add(rbLimo);
+		g.add(rbCocktail);
+		
+		/*
+		rbSeckt.addItemListener(new ItemListener()
+		{public void itemStateChanged(ItemEvent evt)
+			{rbSecktItemStateChanged (evt);}});
+		/*
+		/*
+		public void Secktbuttonauslesen (ItemEvent evt)
+	{
+		String rï¿½ckgabe = "";
+		if(rbSeckt.isSelected() == true)
+		rï¿½ckgabe = "Seckt-Glas";
+		
 	}
+	*/
+		
+		
+		
+		
+	}
+	
+	
 }
